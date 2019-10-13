@@ -6,39 +6,28 @@ Here's what it looks like with real data, using the "classic" style and blue col
 
 ![Image](/cv_sample.png?raw=true "Sample CV")
 
-## Acknowledgment
-This repository is now a fork of [alanorth/cv](https://github.com/alanorth/cv/). Thanks Alan!
-
 ## Usage
 To "build" a PDF you simply type:
 
-    $ make
+```sh
+make
+```
 
 To clean up all generated and intermediate content, type:
 
-    $ make clean
+```sh
+make clean
+```
 
-## Pre-requistes for building
-Depending on your GNU/Linux distribution the package names may be different. Basically, you need the `texlive` package, as well as whichever "extras" package contains the moderncv stuff.
+### Build Using Docker 
+To build a PDF in a docker container and expose it over HTTP, type:
 
-__On Arch Linux:__
+```sh
+docker build -t jasonrogena/cv
+docker run -p <random available port on your machine>:9000 jasonrogena/cv
+```
 
-    $ sudo pacman -Sy texlive-core texlive-latexextra
+Access the generated files on your browser by hitting `http://localhost:<random port you set in docker run>`.
 
-__On Fedora:__
-
-    $ sudo yum install texlive texlive-moderncv
-
-__On Ubuntu:__
-
-    $ sudo add-apt-repository ppa:texlive-backports
-    $ sudo apt-get install texlive
-    $ sudo apt-get --no-install-recommends install texlive-latex-extra
-
-__Mac OS X:__ download and install [BasicTeX](https://www.tug.org/mactex/morepackages.html) (a minimal TeXLive distribution) and then:
-
-    $ export PATH=$PATH:/usr/local/texlive/2017basic/bin/x86_64-darwin
-    $ sudo tlmgr update --self
-    $ sudo tlmgr install collection-fontsrecommended moderncv fontawesome
-
-__Others:__ send a pull request with instructions for your distro.
+## Acknowledgment
+This repository is now a fork of [alanorth/cv](https://github.com/alanorth/cv/). Thanks Alan!

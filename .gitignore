@@ -4,6 +4,7 @@
 *.out
 *.pdf
 *.fls
+output/*
 *.fdb_latexmk
 *.synctex.gz
 .DS_Store

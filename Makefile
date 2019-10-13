@@ -1,14 +1,17 @@
 all: cv example
 
-cv: cv.pdf
+output: output
+	mkdir output
 
-cv.pdf: cv.tex
-	pdflatex cv.tex
+cv: output output/cv.pdf
 
-example: template.pdf
+output/cv.pdf: cv.tex
+	pdflatex -output-directory=output cv.tex
 
-template.pdf: template.tex
-	pdflatex template.tex
+example: output output/template.pdf
+
+output/template.pdf: template.tex
+	pdflatex -output-directory=output template.tex
 
 clean:
-	rm -rf *.out *.dvi *.log *.out *.aux *.pdf
+	rm -rf output
