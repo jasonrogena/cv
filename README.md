@@ -23,7 +23,7 @@ make clean
 To build a PDF in a docker container and expose it over HTTP, type:
 
 ```sh
-docker build -t jasonrogena/cv
+docker build -t jasonrogena/cv .
 docker run -p <random available port on your machine>:9000 jasonrogena/cv
 ```
 
