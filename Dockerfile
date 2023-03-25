@@ -1,6 +1,12 @@
-FROM horgix/moderncv@sha256:fe93495468bfd397295cdac9d33caf4f1618506c5ba3e03d07944c395345dc34 AS builder
+FROM ubuntu:22.04 AS builder
+# FROM pandoc/latex:3.1.1.0-ubuntu AS builder
+
 RUN apt-get update \
-  && apt-get -y install make
+  && DEBIAN_FRONTEND=noninteractive apt-get -y install make wget unzip texlive-full
+RUN wget http://mirrors.ctan.org/macros/latex/contrib/moderncv.zip \
+  && unzip moderncv.zip \
+  && mkdir -p /root/texmf/tex/latex \
+  && mv moderncv /root/texmf/tex/latex/
 WORKDIR /cv/
 COPY * /cv/
 RUN make clean \
